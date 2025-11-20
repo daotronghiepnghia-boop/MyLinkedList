@@ -1,0 +1,379 @@
+:root {
+    --primary-bg: #FFFBF2;
+    --brand-yellow: #FFCB45;
+    --brand-orange: #FE9D3E;
+    --text-dark: #222222;
+}
+body {
+    background-color: var(--primary-bg);
+    font-family: 'Poppins', sans-serif;
+    color: var(--text-dark);
+    overflow-x: hidden;
+}
+
+/* --- PRELOADER --- */
+#preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--primary-bg);
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: opacity 0.5s ease, visibility 0.5s;
+}
+.spinner { animation: spin 2s linear infinite; }
+
+/* ========================================== */
+/* 2. UTILITIES & NAVBAR                      */
+/* ========================================== */
+.navbar { transition: all 0.3s ease-in-out; }
+.scrolled-nav {
+    background-color: rgba(255, 255, 255, 0.95) !important;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    padding-top: 10px !important;
+    padding-bottom: 10px !important;
+}
+
+.active-custom {
+    font-weight: 700;
+    color: var(--text-dark) !important;
+    border-bottom: 3px solid var(--brand-yellow);
+}
+
+.btn-custom-yellow {
+    background-color: var(--brand-yellow);
+    color: var(--text-dark);
+    border: none;
+    transition: all 0.3s ease;
+}
+
+.btn-custom-yellow:hover {
+    background-color: #ffb915;
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(255, 203, 69, 0.4);
+}
+
+.hover-scale { transition: transform 0.3s ease; }
+.hover-scale:hover { transform: scale(1.05); }
+.hover-up { transition: transform 0.3s ease; }
+.hover-up:hover { transform: translateY(-10px); }
+
+/* ========================================== */
+/* 3. HERO SECTION                            */
+/* ========================================== */
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-20px); }
+    100% { transform: translateY(0px); }
+}
+.animate-float { animation: float 4s ease-in-out infinite; }
+.animate-float-delay-1 { animation: float 4s ease-in-out infinite 1s; }
+.animate-float-delay-2 { animation: float 4s ease-in-out infinite 2s; }
+
+.decor-dot {
+    position: absolute;
+    border-radius: 50%;
+    background-color: var(--brand-orange);
+    opacity: 0.8;
+    z-index: 0;
+}
+.dot-1 { width: 60px; height: 60px; top: -20px; right: 80px; }
+.dot-2 { width: 30px; height: 30px; bottom: 50px; left: 50px; }
+.dot-3 { width: 80px; height: 80px; top: 50%; right: -20px; opacity: 0.5; }
+
+.main-dish { max-width: 100%; width: 450px; position: relative; z-index: 2; }
+.side-dish-1 { bottom: -30px; left: 0; width: 140px; z-index: 3; }
+.side-dish-2 { bottom: 20px; right: 0; width: 160px; z-index: 3; }
+
+/* ========================================== */
+/* 4. MENU CARDS                              */
+/* ========================================== */
+.menu-card { background: transparent; }
+.menu-img-wrapper {
+    position: relative;
+    z-index: 2;
+    margin-bottom: -60px;
+    transition: transform 0.3s ease;
+}
+.menu-img-wrapper img {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    transition: transform 0.3s;
+}
+.menu-card:hover .menu-img-wrapper img { transform: scale(1.1) rotate(5deg); }
+.menu-card .card-body {
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    transition: all 0.3s ease;
+}
+.image-grid-final { padding-right: 20px; transition: all 0.4s ease; }
+.grid-img-large {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+.grid-img-small {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+.grid-img-large:hover, .grid-img-small:hover { transform: scale(1.02); }
+.bg-light-gray { background-color: #F9F9F9; }
+.avatar-img {
+    width: 60px; height: 60px;
+    object-fit: cover; border: 3px solid #fff;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+.carousel-indicators button {
+    width: 10px !important; height: 10px !important;
+    margin: 0 5px !important; border: none !important;
+    opacity: 1 !important;
+}
+.carousel-indicators button.active {
+    background-color: var(--brand-yellow) !important;
+    width: 12px !important; height: 12px !important;
+}
+.discount-banner {
+    min-height: 350px;
+    cursor: pointer;
+    border: 1px solid #ddd;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+    position: relative;
+}
+.bg-image { transition: transform 0.6s ease; }
+.overlay-content {
+    background-color: rgba(0, 0, 0, 0.75);
+    opacity: 0;
+    z-index: 10;
+    transition: opacity 0.4s ease-in-out;
+}
+.click-hint { z-index: 20; transition: opacity 0.3s; pointer-events: none; }
+.discount-banner.active .overlay-content { opacity: 1; }
+.discount-banner.active .bg-image { transform: scale(1.1); }
+.discount-banner.active .click-hint { opacity: 0; }
+
+.social-btn {
+    width: 40px; height: 40px; border-radius: 50%;
+    background-color: white; display: flex;
+    align-items: center; justify-content: center;
+    color: var(--text-dark); text-decoration: none;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1); transition: 0.3s;
+}
+.social-btn.active, .social-btn:hover {
+    background-color: var(--brand-yellow); color: white;
+}
+
+/* ========================================== */
+/* 7. ANIMATIONS & SEARCH MODAL               */
+/* ========================================== */
+.reveal {
+    opacity: 0; transform: translateY(50px);
+    transition: all 0.8s ease-out;
+}
+.reveal.active { opacity: 1; transform: translateY(0); }
+
+#backToTop {
+    position: fixed; bottom: 30px; right: 30px;
+    width: 50px; height: 50px; z-index: 1000;
+    display: none; opacity: 0; transition: all 0.4s;
+}
+#backToTop.show { display: block; opacity: 1; animation: bounceIn 0.5s; }
+#backToTop:hover { background-color: var(--text-dark); color: var(--brand-yellow); transform: translateY(-5px); }
+
+@keyframes bounceIn { 0% { transform: scale(0); } 80% { transform: scale(1.1); } 100% { transform: scale(1); } }
+
+.search-item { transition: all 0.2s ease; cursor: pointer; }
+.search-item:hover { background-color: #FFFBF2; transform: translateY(-2px); }
+.search-img { width: 70px; height: 70px; object-fit: cover; border-radius: 12px; }
+/* --- CART STYLES --- */
+.cart-item {
+    transition: background-color 0.2s;
+    border-bottom: 1px solid #eee;
+}
+.cart-item:last-child {
+    border-bottom: none;
+}
+.cart-item-img {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 15px;
+}
+.btn-remove {
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+}
+.btn-remove:hover {
+    background-color: #dc3545 !important; /* Màu đỏ khi hover */
+    color: white !important;
+}
+/* ========================================== */
+/* 10. SUCCESS ANIMATION (THANH TOÁN)         */
+/* ========================================== */
+.success-checkmark {
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* SỬA TỪ .Payment-icon THÀNH .check-icon CHO KHỚP VỚI HTML */
+.check-icon {
+    width: 80px;
+    height: 80px;
+    position: relative;
+    border-radius: 50%;
+    box-sizing: content-box;
+    border: 4px solid #4CAF50;
+}
+
+.check-icon::before {
+    top: 3px;
+    left: -2px;
+    width: 30px;
+    transform-origin: 100% 50%;
+    border-radius: 100px 0 0 100px;
+}
+
+.check-icon::after {
+    top: 0;
+    left: 30px;
+    width: 60px;
+    transform-origin: 0 50%;
+    border-radius: 0 100px 100px 0;
+    animation: rotate-circle 4.25s ease-in;
+}
+
+/* ANIMATION CHO CÁC NÉT VẼ */
+.icon-line {
+    height: 5px;
+    background-color: #4CAF50;
+    display: block;
+    border-radius: 2px;
+    position: absolute;
+    z-index: 10;
+}
+
+.icon-line.line-tip {
+    top: 46px;
+    left: 14px;
+    width: 25px;
+    transform: rotate(45deg);
+    animation: icon-line-tip 0.75s;
+}
+
+.icon-line.line-long {
+    top: 38px;
+    right: 8px;
+    width: 47px;
+    transform: rotate(-45deg);
+    animation: icon-line-long 0.75s;
+}
+
+@keyframes icon-line-tip {
+    0% { width: 0; left: 1px; top: 19px; }
+    54% { width: 0; left: 1px; top: 19px; }
+    70% { width: 50px; left: -8px; top: 37px; }
+    84% { width: 17px; left: 21px; top: 48px; }
+    100% { width: 25px; left: 14px; top: 46px; }
+}
+
+@keyframes icon-line-long {
+    0% { width: 0; right: 46px; top: 54px; }
+    65% { width: 0; right: 46px; top: 54px; }
+    84% { width: 55px; right: 0px; top: 35px; }
+    100% { width: 47px; right: 8px; top: 38px; }
+}
+
+@keyframes rotate-circle {
+    0% { transform: rotate(-45deg); }
+    5% { transform: rotate(-45deg); }
+    12% { transform: rotate(-405deg); }
+    100% { transform: rotate(-405deg); }
+}
+/* --- BLOG MODAL STYLES --- */
+.cursor-pointer {
+    cursor: pointer;
+}
+
+.rating-stars i {
+    margin: 0 2px;
+    transition: transform 0.2s;
+}
+
+.rating-stars i:hover {
+    transform: scale(1.2);
+}
+
+.upload-box {
+    border-color: #dee2e6;
+    transition: all 0.3s;
+}
+
+.upload-box:hover {
+    border-color: var(--brand-yellow);
+    background-color: #FFFBF2;
+    color: var(--brand-orange);
+}
+
+.border-dashed {
+    border-style: dashed !important;
+}
+@media (max-width: 991px) {
+    .hero-section { text-align: center; }
+    .hero-section h1 { font-size: 3rem; }
+    .main-dish { width: 350px; margin-top: 3rem; }
+    .side-dish-1, .side-dish-2, .decor-dot { display: none; }
+    .image-grid-final { padding-right: 0; margin-bottom: 2rem; }
+    .grid-img-large { height: 250px; }
+    .grid-img-small { height: 160px; }
+}
+
+@media (max-width: 767px) {
+    .navbar-brand { font-size: 1.5rem; }
+    .hero-section h1 { font-size: 2.5rem; }
+    .main-dish { width: 280px; }
+    .discount-banner { min-height: 250px; padding: 1.5rem !important; }
+    .discount-banner h2 { font-size: 1.8rem; }
+    h2 { font-size: 2rem; }
+}
+/* Import Font Roboto */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,300&display=swap');
+
+body {
+    font-family: 'Roboto', Helvetica, Arial, sans-serif;
+    background-color: #f5f5f5;
+}
+
+/* Màu placeholder input (xám nhạt) */
+input::placeholder {
+    color: #bfbfbf; 
+    font-weight: 300;
+}
+
+/* Checkbox style */
+input[type="checkbox"] {
+    accent-color: #0e9dd5;
+    cursor: pointer;
+}
+
+/* Hiệu ứng focus input */
+input:focus {
+    box-shadow: 0 0 3px rgba(14, 157, 213, 0.3);
+}
+
+/* Animation cho Modal */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
